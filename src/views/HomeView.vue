@@ -393,6 +393,7 @@ import bannerImage3 from '@/assets/imagem/banner-3.png'
 import bannerImage4 from '@/assets/imagem/banner-4.png'
 import iconCart from '@/assets/icons/cart.svg'
 import imagemTeste from '@/assets/imagem/imagem-1.png'
+import { ProdutoModel } from '@/model/model'
 
 export default ({
   name: 'HomeView',
@@ -419,11 +420,7 @@ export default ({
         senha: null,
       },
       formValido: false,
-      product: {
-        name: 'Nome do Produto',
-        price: 'R$100,00',
-        image: 'C:\\Users\\higor\\OneDrive\\Documentos\\Faculdade\\Progamação 3\\trab\\mini-ecommerce-web\\mini-ecommerce-web\\src\\assets\\imagem\\imagem-1.png'
-      },
+      product: ProdutoModel,
     };
   },
   methods: {

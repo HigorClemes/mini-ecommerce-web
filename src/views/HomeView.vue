@@ -43,7 +43,7 @@
       </v-card-subtitle>
 
       <v-card-actions class="center">
-        <v-btn class="button">Comprar</v-btn>
+        <v-btn class="button" @click="openPageDetail()">Comprar</v-btn>
       </v-card-actions> 
     </v-card>
     <v-card class="card-prod">
@@ -433,11 +433,9 @@ export default ({
     reset() {
       this.$refs.formdodani.reset();
     },
-    redirecionar() {
-      this.$router.push('/home');
-    },
-    redirecionarCadastro() {
-      this.$router.push('/register-user'); 
+    openPageDetail() {
+      console.log('qualquer coisa');
+      this.$router.push('/product-detail');
     },
   },
 })

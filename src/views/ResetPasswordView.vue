@@ -52,5 +52,9 @@
     color: white;
     background-color: black;
 }
+
+nav {
+    display: none !important;
+  }
 </style>
   

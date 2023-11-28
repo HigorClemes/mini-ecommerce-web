@@ -36,14 +36,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "daniel" */ '../views/HomeView.vue')
   },
   {
-    path: '/product-detail',
-    name: 'product-detail',
-    component: () => import(/* webpackChunkName: "daniel" */ '../views/ProductDetailView.vue')
-  },
-  {
-    path: '/cadastro-produto',
-    name: 'cadastro-produto',
-    component: () => import(/* webpackChunkName: "daniel" */ '../views/CadastroProdutoView.vue')
+  path: '/details',
+    name: 'details',
+    component: () => import(/* webpackChunkName: "daniel" */ '../views/DetailsView.vue')
   },
 ]
 

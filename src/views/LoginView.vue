@@ -23,14 +23,6 @@
                 Cadastre-se
             </v-btn>
         </p>
-
-        <p class="space" style="margin-top: 20px">
-            <a class="redefinir" href="/cadastro-produto"><h3>Cadastrar Produto</h3></a>
-
-            <v-btn @click="validate(); redirecionarCadastroProd()" class="button-entrar">
-                Cadastrar Produto
-            </v-btn>
-        </p>
     
       </v-form>
     </div>
@@ -80,9 +72,6 @@ console.log(this.dados.senha)
       redirecionarCadastro() {
         this.$router.push('/register-user'); 
       },
-      redirecionarCadastroProd() {
-        this.$router.push('/cadastro-produto'); 
-      },
     },
   })
   </script>
@@ -118,9 +107,5 @@ console.log(this.dados.senha)
             background-color: black;
         }
     }
-    
-    nav {
-    display: none !important;
-  }
   </style>
   

@@ -413,10 +413,16 @@ export default ({
     reset() {
       this.$refs.formdodani.reset();
     },
-    openPageDetail() {
-      console.log('qualquer coisa');
-      this.$router.push('/product-detail');
+    redirecionar() {
+      this.$router.push('/home');
     },
+    redirecionarCadastro() {
+      this.$router.push('/register-user'); 
+    },
+    redirecionarDetails() {
+        this.$router.push('/details');
+    },
+  }
   },
   async mounted() {
     await axios.get('http://localhost:8080/produto')

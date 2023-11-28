@@ -111,9 +111,5 @@ import axios from 'axios';
             background-color: black;
         }
     }
-
-    nav {
-    display: none !important;
-  }
   </style>
   

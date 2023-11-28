@@ -35,7 +35,7 @@
           R$ 1603,52
         </p>
         <p style="color: rgb(2, 253, 2)">
-          R$ 999,99
+          R$ 999,99'
         </p>
         <p style="color: white">
           À vista no pix
@@ -43,7 +43,7 @@
       </v-card-subtitle>
 
       <v-card-actions class="center">
-        <v-btn class="button" @click="openPageDetail()">Comprar</v-btn>
+        <v-btn class="button">Comprar</v-btn>
       </v-card-actions> 
     </v-card>
     <v-card class="card-prod">
@@ -68,7 +68,7 @@
       </v-card-subtitle>
 
       <v-card-actions class="center">
-        <v-btn class="button">Comprar</v-btn>
+        <v-btn @click=" redirecionarDetails() " class="button">Comprar</v-btn>
       </v-card-actions> 
     </v-card>
     <v-card class="card-prod">
@@ -433,11 +433,16 @@ export default ({
     reset() {
       this.$refs.formdodani.reset();
     },
-    openPageDetail() {
-      console.log('qualquer coisa');
-      this.$router.push('/product-detail');
+    redirecionar() {
+      this.$router.push('/home');
     },
-  },
+    redirecionarCadastro() {
+      this.$router.push('/register-user'); 
+    },
+    redirecionarDetails() {
+        this.$router.push('/details');
+    },
+  }
 })
 </script>
 

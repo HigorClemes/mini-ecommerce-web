@@ -422,7 +422,6 @@ export default ({
     redirecionarDetails() {
         this.$router.push('/details');
     },
-  }
   },
   async mounted() {
     await axios.get('http://localhost:8080/produto')

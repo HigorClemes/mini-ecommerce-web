@@ -23,6 +23,14 @@
                 Cadastre-se
             </v-btn>
         </p>
+
+        <p class="space" style="margin-top: 20px">
+            <a class="texto"><h3>Cadastrar Produto</h3></a>
+
+            <v-btn @click="redirecionarCadastroProd()" class="button-entrar">
+                Cadastrar
+            </v-btn>
+        </p>
     
       </v-form>
     </div>
@@ -63,7 +71,7 @@ import axios from 'axios';
         });
 
         let index = this.usuario.findIndex(item => { return item.nome.toLowerCase() == this.dados.nome.toLowerCase() && item.senha == this.dados.senha });
-console.log(this.dados.senha)
+
         if (index > -1)
           this.$router.push('/home');
         else  
@@ -71,6 +79,9 @@ console.log(this.dados.senha)
       },
       redirecionarCadastro() {
         this.$router.push('/register-user'); 
+      },
+      redirecionarCadastroProd() {
+        this.$router.push('/cadastro-produto'); 
       },
     },
   })

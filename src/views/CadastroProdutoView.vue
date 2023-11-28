@@ -11,11 +11,23 @@
         <v-text-field type="number" v-model="dados.valor" label="Preço*" :rules="[rules.required]"></v-text-field>
         <v-text-field v-model="dados.descricao_produto" label="Desc.Produto*" :rules="[rules.required]"></v-text-field>
         <v-text-field v-model="dados.informacoes_tecnicas" label="Info.Técnicas*" :rules="[rules.required]"></v-text-field>
-        <v-text-field v-model="dados.eh_promocao" label="Promocao*" :rules="[rules.required]"></v-text-field>
+        Promoção*
+        <v-checkbox
+                  v-model="dados.eh_promocao"
+                  label="True"
+                  value=true>
+        </v-checkbox>
+        <v-checkbox
+                  v-model="dados.eh_promocao"
+                  label="False"
+                  value=false>
+        </v-checkbox>
         <v-file-input
+                    @change="handleImageUpload" accept="image/*"
                     show-size
                     counter
                     multiple
+                    v-model="arquivoSelecionado"
                     label="Fotos"></v-file-input>
         <v-text-field v-model="dados.tipo" label="Tipo*" :rules="[rules.required]"></v-text-field>
 
@@ -43,14 +55,26 @@
         dados: {
           produto: null,
           descricao: null,
-          preco: null,
+          valor: null,
           descricao_produto: null,
           informacoes_tecnicas: null,
-          eh_promocao: null,
+          eh_promocao: false,
           promocao: null,
-          dt_nascimento: null,
+          foto: null,
+        },
+        watch: {
+        arquivoSelecionado(val) {
+            if (val) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    this.dados.foto = e.target.result;
+                };2
+                reader.readAsDataURL(val);
+            }
+          }
         },
         formValido: false,
+        arquivoSelecionado: null,
       };
     },
     methods: {
@@ -64,8 +88,8 @@
         this.$router.push('/login');
       },
       salvar() {
-        console.log('dadoss',this.dados)
-        axios.post('https://localhost:8080/produto', {
+        console.log('dadoss',this.dados, 'foto?', this.arquivoSelecionado);
+        axios.post('http://localhost:8080/produto', {
           produto: this.dados.produto,
           descricao: this.dados.descricao,
           valor: this.dados.valor,
@@ -82,6 +106,22 @@
             console.error(error);
         });
       },
+      handleImageUpload(event) { 
+      const file = event.target.files[0];  
+
+      if (file) { 
+        // Use FileReader para ler o arquivo como Base64 [// Use FileReader para ler o arquivo como Base64] 
+        const reader = new FileReader(); 
+
+        reader.onloadend = () => { 
+          // O resultado do FileReader é o código Base64 da imagem [// O resultado do FileReader é o código Base64 da imagem] 
+          this.dados.foto = reader.result; 
+          console.log('nbase',reader.result)
+        }; 
+
+        reader.readAsDataURL(file); 
+      } 
+    },
     },
   })
   </script>

@@ -17,7 +17,7 @@
   
 
         <p class="space-cadastro" style="margin-top: 20px">
-            <v-btn @click="redirecionar()" class="button-cadastrar">
+            <v-btn @click="salvar(); redirecionar()" class="button-cadastrar">
                 Cadastrar
             </v-btn>
         </p>
@@ -27,6 +27,8 @@
   </template>
   
   <script>
+import axios from 'axios';
+
   export default ({
     name: 'LoginView',
     data() {
@@ -57,6 +59,24 @@
       },
       redirecionar() {
         this.$router.push('/login');
+      },
+      salvar() {
+        console.log('dadoss',this.dados, 'foto?', this.arquivoSelecionado);
+        axios.post('http://localhost:8080/usuario', {
+          nome: this.dados.nome,
+          dt_nascimento: this.dados.dt_nascimento,
+          cpf: this.dados.cpf,
+          email: this.dados.email,
+          endereco: this.dados.endereco,
+          complemento: this.dados.complemento,
+          senha: this.dados.senha,
+        })
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
       },
     },
   })

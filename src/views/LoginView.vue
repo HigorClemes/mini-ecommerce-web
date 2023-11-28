@@ -29,8 +29,11 @@
   </template>
   
   <script>
+import axios from 'axios';
+
   export default ({
     name: 'LoginView',
+    usuario: [],
     data() {
       return {
         rules:{
@@ -51,8 +54,20 @@
       reset() {
         this.$refs.formdodani.reset();
       },
-      redirecionar() {
-        this.$router.push('/home');
+      async redirecionar() {
+        await axios.get('http://localhost:8080/usuario').then(response => {
+          console.log(response.data);
+          this.usuario = response.data;
+        }).catch(error => {
+          console.error(error);
+        });
+
+        let index = this.usuario.findIndex(item => { return item.nome.toLowerCase() == this.dados.nome.toLowerCase() && item.senha == this.dados.senha });
+console.log(this.dados.senha)
+        if (index > -1)
+          this.$router.push('/home');
+        else  
+          alert('Usuário ou senha incorretos!');
       },
       redirecionarCadastro() {
         this.$router.push('/register-user'); 
